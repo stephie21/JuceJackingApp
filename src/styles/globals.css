@@ -1,17 +1,24 @@
+html,
+body,
+#root {
+  overflow-x: hidden;
+}
+
 .storyboard-root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
-  padding: 2rem;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(1rem, 3vw, 2rem);
   background: var(--background);
   color: var(--foreground);
+  overflow-x: hidden;
 }
 
 .storyboard-page {
-  width: min(100%, 1920px);
-  aspect-ratio: 16 / 9;
+  width: min(100%, 54rem);
+  aspect-ratio: 9 / 16;
   position: relative;
   overflow: hidden;
   background: var(--background);
@@ -23,6 +30,205 @@
 .storyboard-stage {
   position: absolute;
   inset: 0;
+  container-type: size;
+}
+
+.storyboard-stage .video-screen {
+  --video-screen-padding-inline: clamp(0.75rem, 4cqw, 2rem);
+  --video-screen-padding-block: clamp(0.75rem, 3cqh, 1.5rem);
+  --video-screen-gap: clamp(0.5rem, 1.6cqh, 1rem);
+  --video-kicker-space: clamp(1rem, 2.4cqh, 1.5rem);
+  --video-button-space: clamp(3rem, 7cqh, 4rem);
+  --video-bottom-breathing-room: clamp(0.5rem, 2cqh, 1rem);
+  min-height: 100%;
+  height: 100%;
+  width: 100%;
+}
+
+.storyboard-stage .public-video-frame {
+  --video-frame-available-height: calc(100cqh - (2 * var(--video-screen-padding-block)) - var(--video-kicker-space) - var(--video-button-space) - (2 * var(--video-screen-gap)) - var(--video-bottom-breathing-room));
+  --video-frame-width: min(92cqw, calc(100cqw - (2 * var(--video-screen-padding-inline))), calc(var(--video-frame-available-height) * 9 / 16));
+}
+
+.kiosk-screen {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--accent) 55%, transparent) transparent;
+}
+
+.kiosk-screen::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.kiosk-screen::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--accent) 45%, transparent);
+  border-radius: var(--radius-xl);
+}
+
+.kiosk-pad {
+  padding: clamp(3.25rem, 6vh, 5rem) clamp(1.5rem, 6vw, 5rem) clamp(1.5rem, 5vh, 4rem);
+}
+
+.kiosk-action {
+  min-height: clamp(4rem, 7vh, 5rem);
+  min-width: clamp(12rem, 36vw, 18rem);
+}
+
+.quiz-options {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.public-video-frame {
+  --video-frame-available-height: calc(100dvh - (2 * var(--video-screen-padding-block)) - var(--video-kicker-space) - var(--video-button-space) - (2 * var(--video-screen-gap)) - var(--video-bottom-breathing-room));
+  --video-frame-width: min(92vw, calc(100vw - (2 * var(--video-screen-padding-inline))), calc(var(--video-frame-available-height) * 9 / 16));
+  position: relative;
+  width: var(--video-frame-width);
+  height: min(var(--video-frame-available-height), calc(var(--video-frame-width) * 16 / 9));
+  aspect-ratio: 9 / 16;
+  flex: 0 1 auto;
+  overflow: hidden;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-xl);
+  background: var(--card);
+  box-shadow: 0 24px 80px color-mix(in srgb, var(--background) 40%, transparent);
+}
+
+.public-video-element {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--background);
+  object-fit: contain;
+}
+
+.video-screen {
+  --video-screen-padding-inline: clamp(1rem, 4vw, 3rem);
+  --video-screen-padding-block: clamp(1rem, 2.75dvh, 2rem);
+  --video-screen-gap: clamp(0.75rem, 1.8dvh, 1.5rem);
+  --video-kicker-space: clamp(1.25rem, 2.5dvh, 1.75rem);
+  --video-button-space: clamp(4rem, 7dvh, 5rem);
+  --video-bottom-breathing-room: clamp(0.75rem, 2.25dvh, 1.5rem);
+  min-height: 100dvh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--video-screen-gap);
+  padding: var(--video-screen-padding-block) var(--video-screen-padding-inline) calc(var(--video-screen-padding-block) + var(--video-bottom-breathing-room));
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.video-screen-kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted-foreground);
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.video-error-panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 2.5vh, 1.75rem);
+  padding: clamp(1.5rem, 6vw, 4rem);
+  text-align: center;
+  background: radial-gradient(circle at 50% 25%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 42%), var(--card);
+}
+
+.video-error-panel h1 {
+  margin: 0;
+  color: var(--foreground);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(2.4rem, min(7vw, 6vh), 5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.video-error-panel p {
+  max-width: 24rem;
+  margin: 0;
+  color: var(--muted-foreground);
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  line-height: 1.5;
+}
+
+.video-primary-action,
+.video-skip-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  border-radius: var(--radius-xl);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.video-primary-action {
+  padding: clamp(1.15rem, 2.4vh, 1.6rem) clamp(3rem, 8vw, 5rem);
+  border: 0;
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.video-skip-action {
+  padding: clamp(0.95rem, 2vh, 1.25rem) clamp(2.5rem, 7vw, 4rem);
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--card) 70%, transparent);
+  color: var(--accent);
+  flex: 0 0 auto;
+  margin-bottom: var(--video-bottom-breathing-room);
+}
+
+.summary-tips-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (orientation: portrait) {
+  .kiosk-pad {
+    padding: clamp(4rem, 7vh, 7rem) clamp(1.5rem, 7vw, 4.5rem) clamp(2rem, 5vh, 5rem);
+  }
+
+  .quiz-options,
+  .summary-tips-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+}
+
+@media (max-width: 900px) {
+  .quiz-options,
+  .summary-tips-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-height: 760px) {
+  .kiosk-pad {
+    padding-top: clamp(2rem, 5vh, 3.25rem);
+    padding-bottom: clamp(1.25rem, 4vh, 2rem);
+  }
+
 }
 
 .storyboard-screen-label {
@@ -143,7 +349,7 @@
 }
 
 @page {
-  size: 16in 9in;
+  size: 9in 16in;
   margin: 0;
 }
 

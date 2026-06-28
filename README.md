@@ -1,17 +1,49 @@
+# Juice Jacking Quiz App
 
-  # Juice Jacking Quiz App
+React/Vite kiosk quiz for a 9:16 portrait display. The target installation is a 2160x3840 screen with the browser running fullscreen.
 
-  This is a code bundle for Juice Jacking Quiz App. The original project is available at https://www.figma.com/design/SRasoKGbAzhthGZqcGaBn1/Juice-Jacking-Quiz-App.
+## Running The Code
 
-  ## Running the code
+Install dependencies:
 
-  Run `npm i` to install the dependencies.
+```bash
+npm i
+```
 
-  Run `npm run dev` to start the development server.
+Start the development server:
 
-  Open `http://localhost:5173/` for the interactive quiz.
+```bash
+npm run dev
+```
 
-  Open `http://localhost:5173/storyboard` or `http://localhost:5173/?mode=storyboard` for the static storyboard/print mode.
+Create a production build:
 
-  To export the storyboard as a PDF, open the storyboard URL in the browser, choose Print, enable background graphics, and save as PDF. Each 16:9 storyboard screen prints on its own page.
-  
+```bash
+npm run build
+```
+
+Open `http://localhost:5173/` for the interactive quiz.
+
+Open `http://localhost:5173/storyboard` or `http://localhost:5173/?mode=storyboard` for the static portrait storyboard/print mode.
+
+## Video Setup
+
+Place kiosk videos in the Vite public folder at the project root:
+
+```text
+public/videos/1.mov
+public/videos/2.mov
+public/videos/3.mov
+public/videos/4.mov
+public/videos/5.mov
+```
+
+Do not place runtime videos under `src/public/videos`; Vite serves files from root `public` at `/`, so the app loads `/videos/1.mov` through `/videos/5.mov`.
+
+The app expects one video before each matching question. If a video is missing or cannot be decoded, the video screen shows `Video konnte nicht geladen werden.` and a large `Weiter` button.
+
+`.mov` support depends on the browser and codec. If the kiosk browser cannot play the files reliably, export matching `.mp4` versions and update the video source mapping in `src/app/components/VideoPlaceholder.tsx`.
+
+## Storyboard Export
+
+The storyboard is optimized for 9:16 portrait. To export it as a PDF, open the storyboard URL in the browser, choose Print, enable background graphics, choose a portrait page size, and save as PDF.

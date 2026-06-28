@@ -16,6 +16,8 @@
   --muted-foreground: #8888a0;
   --accent: #f5e642;
   --accent-foreground: #08090d;
+  --success: #4ade80;
+  --danger: #ff4757;
   --destructive: #ff4757;
   --destructive-foreground: #ffffff;
   --border: rgba(245, 230, 66, 0.15);
