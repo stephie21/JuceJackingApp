@@ -31,18 +31,18 @@ Open `http://localhost:5173/storyboard` or `http://localhost:5173/?mode=storyboa
 Place kiosk videos in the Vite public folder at the project root:
 
 ```text
-public/videos/1.mov
-public/videos/2.mov
-public/videos/3.mov
-public/videos/4.mov
-public/videos/5.mov
+public/videos/1.mp4
+public/videos/2.mp4
+public/videos/3.mp4
+public/videos/4.mp4
+public/videos/5.mp4
 ```
 
-Do not place runtime videos under `src/public/videos`; Vite serves files from root `public` at `/`, so the app loads `/videos/1.mov` through `/videos/5.mov`.
+Do not place runtime videos under `src/public/videos`; Vite serves files from root `public` at `/`, so the kiosk loads `/videos/1.mp4` through `/videos/5.mp4` from `public/videos`.
 
 The app expects one video before each matching question. If a video is missing or cannot be decoded, the video screen shows `Video konnte nicht geladen werden.` and a large `Weiter` button.
 
-`.mov` support depends on the browser and codec. If the kiosk browser cannot play the files reliably, export matching `.mp4` versions and update the video source mapping in `src/app/components/VideoPlaceholder.tsx`.
+The kiosk uses MP4 files from the root `public/videos` directory. Keep the filenames aligned with the app's video mapping in `src/app/components/VideoPlaceholder.tsx`.
 
 ## Storyboard Export
 
