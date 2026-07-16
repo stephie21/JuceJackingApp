@@ -35,12 +35,10 @@ export function AttractScreen({ onStart }: AttractScreenProps) {
 
       <main className="kiosk-main attract-main kiosk-content">
         <h1 className="attract-title">
-          <span className="attract-title-line">
-            <span className="attract-title-bolt">⚡</span>
-            JUICE
+          <span className="attract-title-text">
+            <span className="attract-title-line">JUICE</span>
+            <span className="attract-title-line attract-title-line-accent">JACKING</span>
           </span>
-          <br />
-          <span>JACKING</span>
         </h1>
         <p className="attract-subtitle">Lerne, wie du dein Smartphone unterwegs sicher lädst.</p>
       </main>

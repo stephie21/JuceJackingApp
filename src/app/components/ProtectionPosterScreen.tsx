@@ -12,6 +12,8 @@ import {
 
 interface ProtectionPosterScreenProps {
   onRestart: () => void;
+  actionLabel?: string;
+  onAction?: () => void;
 }
 
 interface ProtectionMeasure {
@@ -63,8 +65,13 @@ const PROTECTION_MEASURES: ProtectionMeasure[] = [
   },
 ];
 
-export function ProtectionPosterScreen({ onRestart }: ProtectionPosterScreenProps) {
+export function ProtectionPosterScreen({
+  onRestart,
+  actionLabel = "Nochmal spielen",
+  onAction,
+}: ProtectionPosterScreenProps) {
   const shouldReduceMotion = useReducedMotion();
+  const actionHandler = onAction ?? onRestart;
 
   return (
     <div className="kiosk-screen kiosk-pad kiosk-page-shell protection-poster-screen">
@@ -103,12 +110,12 @@ export function ProtectionPosterScreen({ onRestart }: ProtectionPosterScreenProp
       <footer className="kiosk-action-zone protection-poster-action-zone kiosk-content">
         <motion.button
           type="button"
-          onClick={onRestart}
+          onClick={actionHandler}
           className="kiosk-action protection-poster-restart-action"
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.97 }}
         >
-          Nochmal spielen
+          {actionLabel}
         </motion.button>
       </footer>
     </div>

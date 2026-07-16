@@ -230,6 +230,8 @@ type Scenario = 1 | 2;
 
 type Screen = "attract" | "quiz" | "video" | "summary" | "transition" | "finalResult" | "protectionPoster";
 
+type ProtectionPosterEntry = "part1" | "final";
+
 type AnswerState = Record<Scenario, Record<number, string>>;
 
 const IDLE_TIMEOUT_MS = 5 * 60 * 1000;
@@ -262,6 +264,7 @@ function InteractiveQuizApp() {
   const [videoIndex, setVideoIndex] = useState(0);
   const [answers, setAnswers] = useState<AnswerState>(createEmptyAnswers);
   const [cancelDialogOpen, setCancelDialogOpen] = useState(false);
+  const [protectionPosterEntry, setProtectionPosterEntry] = useState<ProtectionPosterEntry>("final");
   const idleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const activeQuestions = scenario === 1 ? QUESTIONS : SCENARIO_2_QUESTIONS;
   const activeQuestion = activeQuestions[questionIndex];
@@ -284,6 +287,7 @@ function InteractiveQuizApp() {
     setVideoIndex(0);
     setAnswers(createEmptyAnswers());
     setCancelDialogOpen(false);
+    setProtectionPosterEntry("final");
   }, [clearIdleTimer]);
 
   const resetIdleTimer = useCallback(() => {
@@ -336,6 +340,16 @@ function InteractiveQuizApp() {
     setVideoIndex(5);
     setCancelDialogOpen(false);
     setScreen("transition");
+  };
+
+  const handleOpenPartOneProtectionTips = () => {
+    setProtectionPosterEntry("part1");
+    setScreen("protectionPoster");
+  };
+
+  const handleOpenFinalProtectionTips = () => {
+    setProtectionPosterEntry("final");
+    setScreen("protectionPoster");
   };
 
   const handleStartPart2Video = () => {
@@ -450,7 +464,6 @@ function InteractiveQuizApp() {
               <span style={{ color: "var(--accent)" }}>⚡</span>
               JUICE JACKING
             </div>
-            <CancelRunButton onClick={() => setCancelDialogOpen(true)} floating />
             <VideoPlaceholder
               videoIndex={videoIndex}
               onComplete={handleVideoComplete}
@@ -474,6 +487,7 @@ function InteractiveQuizApp() {
               score={partOneScore}
               total={QUESTIONS.length}
               onContinueToPart2={handleStartPart2}
+              onContinueToProtectionTips={handleOpenPartOneProtectionTips}
             />
           </motion.div>
         )}
@@ -508,7 +522,7 @@ function InteractiveQuizApp() {
               score={totalScore}
               total={QUESTIONS.length + SCENARIO_2_QUESTIONS.length}
               finalMode
-              onContinueToProtectionTips={() => setScreen("protectionPoster")}
+              onContinueToProtectionTips={handleOpenFinalProtectionTips}
             />
           </motion.div>
         )}
@@ -522,7 +536,11 @@ function InteractiveQuizApp() {
             exit={{ opacity: 0 }}
             transition={{ duration: shouldReduceMotion ? 0 : 0.4 }}
           >
-            <ProtectionPosterScreen onRestart={resetToAttract} />
+            <ProtectionPosterScreen
+              onRestart={resetToAttract}
+              actionLabel={protectionPosterEntry === "part1" ? "Weiter zu Teil 2" : undefined}
+              onAction={protectionPosterEntry === "part1" ? handleStartPart2 : undefined}
+            />
           </motion.div>
         )}
       </AnimatePresence>
@@ -659,6 +677,7 @@ function StoryboardMode() {
           score={4}
           total={QUESTIONS.length}
           onContinueToPart2={() => undefined}
+          onContinueToProtectionTips={() => undefined}
         />
       </StoryboardPage>
 

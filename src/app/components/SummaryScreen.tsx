@@ -26,6 +26,7 @@ export function SummaryScreen({
   const passed = pct >= 80;
   const actionLabel = finalMode ? "Weiter zu den Schutzmaßnahmen" : "Weiter zu Teil 2";
   const actionHandler = finalMode ? onContinueToProtectionTips : onContinueToPart2;
+  const showPartOneProtectionAction = !finalMode && onContinueToProtectionTips && onContinueToPart2;
 
   return (
     <div className="kiosk-screen kiosk-pad kiosk-page-shell summary-screen">
@@ -101,15 +102,38 @@ export function SummaryScreen({
       </main>
 
       <footer className="kiosk-action-zone summary-action-zone kiosk-content">
-        <motion.button
-          type="button"
-          onClick={() => actionHandler?.()}
-          className="kiosk-action summary-protection-action summary-single-action"
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.97 }}
-        >
-          {actionLabel}
-        </motion.button>
+        {showPartOneProtectionAction ? (
+          <div className="summary-action-buttons">
+            <motion.button
+              type="button"
+              onClick={onContinueToProtectionTips}
+              className="kiosk-action summary-protection-action"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              Schutzmaßnahmen
+            </motion.button>
+            <motion.button
+              type="button"
+              onClick={onContinueToPart2}
+              className="kiosk-action summary-restart-action"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              {actionLabel}
+            </motion.button>
+          </div>
+        ) : (
+          <motion.button
+            type="button"
+            onClick={() => actionHandler?.()}
+            className="kiosk-action summary-protection-action summary-single-action"
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            {actionLabel}
+          </motion.button>
+        )}
         <p>Kurs: Usable Security · Barbara Böhm & Stephanie Motz</p>
       </footer>
     </div>
