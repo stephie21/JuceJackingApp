@@ -111,7 +111,7 @@ export function SummaryScreen({
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
             >
-              Schutzmaßnahmen
+              Tipps
             </motion.button>
             <motion.button
               type="button"
