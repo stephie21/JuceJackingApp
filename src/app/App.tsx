@@ -24,17 +24,17 @@ const QUESTIONS: Question[] = [
     feedback: {
       correct: {
         why: "USB überträgt Strom und Daten. Ein unbekannter USB-Anschluss kann diese Datenverbindung missbrauchen.",
-        mnemonic: "Flugmodus schützt nicht vor USB-Datenverbindung.",
+        mnemonic: "Nutze nur vertrauenswürdige USB-Kabel und USB-Anschlüsse. So verhinderst du unerwünschte Datenverbindungen.",
       },
       incorrect: {
         why: "Juice Jacking nutzt die Datenfunktion von USB, nicht WLAN oder eine Lade-App. Auch beim Laden kann eine Datenverbindung entstehen.",
-        mnemonic: "Flugmodus schützt nicht vor USB-Datenverbindung.",
+        mnemonic: "Nutze nur vertrauenswürdige USB-Kabel und USB-Anschlüsse. So verhinderst du unerwünschte Datenverbindungen.",
       },
     },
   },
   {
     id: 2,
-    text: "Wo passiert Juice Jacking?",
+    text: "Wo kann Juice Jacking passieren?",
     options: [
       { key: "A", label: "An öffentlichen USB-Ladestationen, zum Beispiel am Flughafen oder Bahnhof" },
       { key: "B", label: "Nur zu Hause am eigenen Netzteil" },
@@ -65,7 +65,7 @@ const QUESTIONS: Question[] = [
     correct: "B",
     feedback: {
       correct: {
-        why: "Ein manipulierter USB-Anschluss kann Daten auslesen oder Malware übertragen. Ein kaputter Akku ist dafür nicht das typische Risiko.",
+        why: "Ein manipulierter USB-Anschluss kann Daten auslesen oder Malware übertragen. Ein defektes Akku ist dafür nicht das typische Risiko.",
         mnemonic: "Schütze Daten, nicht nur den Akku.",
       },
       incorrect: {
@@ -80,7 +80,7 @@ const QUESTIONS: Question[] = [
     options: [
       { key: "A", label: "Eigenes Netzteil an einer Steckdose oder einen USB Data Blocker nutzen" },
       { key: "B", label: "Das Smartphone beim Laden in der Hand behalten" },
-      { key: "C", label: "Nur ein fremdes Ladekabel verwenden, wenn es kurz ist" },
+      { key: "C", label: "Ein unbekanntes USB-Kabel verwenden, solange es nur kurz ist." },
       { key: "D", label: "Öffentliche USB-Ladestationen nur nachts verwenden" },
     ],
     correct: "A",

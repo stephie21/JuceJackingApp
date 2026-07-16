@@ -28,7 +28,7 @@ const PROTECTION_MEASURES: ProtectionMeasure[] = [
   {
     number: 1,
     title: "Eigenes Netzteil verwenden",
-    description: "— An einer normalen Steckdose laden",
+    description: "— An einer Haushaltssteckdose laden",
     Icon: PlugZap,
   },
   {

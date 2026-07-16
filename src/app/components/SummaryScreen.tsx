@@ -10,7 +10,7 @@ interface SummaryScreenProps {
 }
 
 const PROTECTION_TIPS = [
-  { Icon: ShieldCheck, label: "Schutz #1", text: "Eigenes Netzteil + normale Steckdose nutzen" },
+  { Icon: ShieldCheck, label: "Schutz #1", text: "Eigenes Netzteil + Haushaltssteckdose nutzen" },
   { Icon: Zap, label: "Schutz #2", text: "USB Data Blocker verwenden (~5–15 €)" },
   { Icon: Battery, label: "Schutz #3", text: "Wireless Charging oder Powerbank nutzen" },
 ];
