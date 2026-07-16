@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "motion/react";
 import { CheckCircle, XCircle, Lightbulb } from "lucide-react";
+import type { ReactNode } from "react";
 
 export interface Question {
   id: number;
@@ -25,11 +26,24 @@ interface QuizQuestionProps {
   selected: string | null;
   onSelect: (key: string) => void;
   onNext: () => void;
+  onBack?: () => void;
+  canGoBack?: boolean;
+  cancelAction?: ReactNode;
 }
 
 const KEY_LABELS = ["A", "B", "C", "D"];
 
-export function QuizQuestion({ question, questionIndex, total, selected, onSelect, onNext }: QuizQuestionProps) {
+export function QuizQuestion({
+  question,
+  questionIndex,
+  total,
+  selected,
+  onSelect,
+  onNext,
+  onBack,
+  canGoBack = false,
+  cancelAction,
+}: QuizQuestionProps) {
   const answered = selected !== null;
   const isCorrect = selected === question.correct;
   const activeFeedback = isCorrect ? question.feedback.correct : question.feedback.incorrect;
@@ -37,17 +51,20 @@ export function QuizQuestion({ question, questionIndex, total, selected, onSelec
   return (
     <div className="kiosk-screen kiosk-pad kiosk-page-shell quiz-screen">
       <header className="kiosk-header quiz-header kiosk-content">
-        <div className="quiz-progress-track">
-          <motion.div
-            className="quiz-progress-fill"
-            initial={{ width: `${(questionIndex / total) * 100}%` }}
-            animate={{ width: `${((questionIndex + 1) / total) * 100}%` }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          />
+        <div className="quiz-progress-cluster">
+          <div className="quiz-progress-track">
+            <motion.div
+              className="quiz-progress-fill"
+              initial={{ width: `${(questionIndex / total) * 100}%` }}
+              animate={{ width: `${((questionIndex + 1) / total) * 100}%` }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            />
+          </div>
+          <span className="quiz-progress-count">
+            {questionIndex + 1} / {total}
+          </span>
         </div>
-        <span className="quiz-progress-count">
-          {questionIndex + 1} / {total}
-        </span>
+        {cancelAction && <div className="quiz-cancel-slot">{cancelAction}</div>}
       </header>
 
       <motion.main
@@ -133,7 +150,7 @@ export function QuizQuestion({ question, questionIndex, total, selected, onSelec
               <div className="quiz-feedback-icon">
                 {isCorrect ? <CheckCircle color="var(--success)" /> : <XCircle color="var(--danger)" />}
               </div>
-              <div>
+              <div className="quiz-feedback-body">
                 <p className="quiz-feedback-result" style={{ color: isCorrect ? "var(--success)" : "var(--danger)" }}>
                   {isCorrect ? "✅ Richtig!" : "❌ Leider nicht richtig."}
                 </p>
@@ -159,17 +176,33 @@ export function QuizQuestion({ question, questionIndex, total, selected, onSelec
       <footer className="kiosk-action-zone quiz-action-zone kiosk-content">
         <AnimatePresence>
           {answered && (
-            <motion.button
+            <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.25 }}
-              onClick={onNext}
-              className="kiosk-action quiz-next-action"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
+              className="quiz-action-row"
             >
-              {questionIndex + 1 < total ? "Weiter →" : "Ergebnis anzeigen →"}
-            </motion.button>
+              {canGoBack && onBack && (
+                <motion.button
+                  type="button"
+                  onClick={onBack}
+                  className="kiosk-action quiz-back-action"
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  ← Zurück
+                </motion.button>
+              )}
+              <motion.button
+                type="button"
+                onClick={onNext}
+                className="kiosk-action quiz-next-action"
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                {questionIndex + 1 < total ? "Weiter →" : "Ergebnis anzeigen →"}
+              </motion.button>
+            </motion.div>
           )}
         </AnimatePresence>
       </footer>

@@ -29,40 +29,42 @@ export function SummaryScreen({
 
   return (
     <div className="kiosk-screen kiosk-pad kiosk-page-shell summary-screen">
-      <header className="kiosk-header summary-header kiosk-content">
-        <span>{finalMode ? "Quiz abgeschlossen" : "Teil 1 abgeschlossen"}</span>
-      </header>
-
       <main className="kiosk-main summary-main kiosk-content">
-        <motion.div
-          initial={{ scale: 0.5, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5, type: "spring", bounce: 0.4 }}
-          className="summary-score-circle"
-          style={{
-            background: passed ? "color-mix(in srgb, var(--success) 10%, transparent)" : "color-mix(in srgb, var(--danger) 10%, transparent)",
-            borderColor: passed ? "var(--success)" : "var(--danger)",
-          }}
-        >
-          <span className="summary-score-value" style={{ color: passed ? "var(--success)" : "var(--danger)" }}>
-            {score}/{total}
-          </span>
-          <span className="summary-score-label">{pct}% richtig</span>
-        </motion.div>
+        <section className="summary-hero-stack" aria-label={finalMode ? "Quiz abgeschlossen" : "Teil 1 abgeschlossen"}>
+          <div className="summary-header">
+            <span>{finalMode ? "Quiz abgeschlossen" : "Teil 1 abgeschlossen"}</span>
+          </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="summary-copy"
-        >
-          <h1>{passed ? "✅ Gut gemacht!" : "⚡ Noch mal üben!"}</h1>
-          <p>
-            {finalMode
-              ? "Du hast beide Szenarien abgeschlossen und kennst sichere Alternativen für unterwegs."
-              : "Du kennst jetzt die wichtigsten Schutzmaßnahmen an öffentlichen USB-Ladestationen."}
-          </p>
-        </motion.div>
+          <motion.div
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5, type: "spring", bounce: 0.4 }}
+            className="summary-score-circle"
+            style={{
+              background: passed ? "color-mix(in srgb, var(--success) 10%, transparent)" : "color-mix(in srgb, var(--danger) 10%, transparent)",
+              borderColor: passed ? "var(--success)" : "var(--danger)",
+            }}
+          >
+            <span className="summary-score-value" style={{ color: passed ? "var(--success)" : "var(--danger)" }}>
+              {score}/{total}
+            </span>
+            <span className="summary-score-label">{pct}% richtig</span>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="summary-copy"
+          >
+            <h1>{passed ? "✅ Gut gemacht!" : "⚡ Noch mal üben!"}</h1>
+            <p>
+              {finalMode
+                ? "Du hast beide Szenarien abgeschlossen und kennst sichere Alternativen für unterwegs."
+                : "Du kennst jetzt die wichtigsten Schutzmaßnahmen an öffentlichen USB-Ladestationen."}
+            </p>
+          </motion.div>
+        </section>
 
         <motion.div
           initial={{ opacity: 0 }}

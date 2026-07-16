@@ -35,7 +35,10 @@ export function AttractScreen({ onStart }: AttractScreenProps) {
 
       <main className="kiosk-main attract-main kiosk-content">
         <h1 className="attract-title">
-          ⚡ JUICE
+          <span className="attract-title-line">
+            <span className="attract-title-bolt">⚡</span>
+            JUICE
+          </span>
           <br />
           <span>JACKING</span>
         </h1>

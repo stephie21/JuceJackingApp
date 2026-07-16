@@ -121,106 +121,106 @@ const QUESTIONS: Question[] = [
 const SCENARIO_2_QUESTIONS: Question[] = [
   {
     id: 6,
-    text: "Warum war die Powerbank im Video die sicherere Alternative?",
-options: [
-      { key: "A", label: "Sie lädt Smartphones schneller." },
-      { key: "B", label: "Sie funktioniert auch ohne Steckdose." },
-      { key: "C", label: "Sie liefert Strom, ohne eine Verbindung zu einer öffentlichen USB-Datenquelle herzustellen." },
-      { key: "D", label: "Sie verschlüsselt automatisch alle Daten." },
+    text: "Welche Lademöglichkeit ist unterwegs am sichersten?",
+    options: [
+      { key: "A", label: "Ein öffentliches USB-Kabel benutzen" },
+      { key: "B", label: "Das Smartphone direkt an einen unbekannten USB-Port anschließen" },
+      { key: "C", label: "Die eigene Powerbank oder das eigene Netzteil verwenden" },
+      { key: "D", label: "Ein fremdes USB-Kabel benutzen, wenn es neu aussieht" },
     ],
     correct: "C",
     feedback: {
       correct: {
-        why: "Eine Powerbank versorgt das Smartphone lediglich mit Strom. Anders als bei unbekannten USB-Ladestationen besteht dabei keine Verbindung zu einer fremden Datenquelle, über die Daten übertragen werden könnten.",
-        mnemonic: "Die eigene Powerbank ist unterwegs eine sichere Alternative.",
+        why: "Eigene Ladegeräte und Powerbanks stellen keine Verbindung zu einer unbekannten USB-Datenquelle her. Dadurch wird das Smartphone geladen, ohne einem fremden USB-Anschluss zu vertrauen.",
+        mnemonic: "Nutze unterwegs möglichst dein eigenes Ladezubehör.",
       },
       incorrect: {
-        why: "Eine Powerbank versorgt das Smartphone lediglich mit Strom. Anders als bei unbekannten USB-Ladestationen besteht dabei keine Verbindung zu einer fremden Datenquelle, über die Daten übertragen werden könnten.",
-        mnemonic: "Die eigene Powerbank ist unterwegs eine sichere Alternative.",
+        why: "Unbekannte USB-Ports oder fremde Kabel können neben Strom auch eine Datenverbindung herstellen. Sicherer sind die eigene Powerbank oder das eigene Netzteil.",
+        mnemonic: "Nutze unterwegs möglichst dein eigenes Ladezubehör.",
       },
     },
   },
   {
     id: 7,
-    text: "Was symbolisiert der rote Datenstrom zwischen Smartphone und Hacker?",
-options: [
-      { key: "A", label: "Das Smartphone lädt besonders schnell." },
-      { key: "B", label: "Persönliche Daten werden vom Smartphone übertragen." },
-      { key: "C", label: "Der Akku wird beschädigt." },
-      { key: "D", label: "Das Smartphone installiert automatisch Updates." },
+    text: "Warum ist eine Powerbank eine sichere Alternative?",
+    options: [
+      { key: "A", label: "Sie lädt jedes Smartphone schneller" },
+      { key: "B", label: "Sie verschlüsselt automatisch alle Daten" },
+      { key: "C", label: "Sie versorgt das Smartphone mit Strom, ohne eine fremde USB-Datenverbindung zu nutzen" },
+      { key: "D", label: "Sie entfernt Schadsoftware vom Smartphone" },
     ],
-    correct: "B",
+    correct: "C",
     feedback: {
       correct: {
-        why: "Der rote Datenstrom ist eine Visualisierung für den möglichen Datendiebstahl. Er zeigt, dass über eine manipulierte USB-Verbindung nicht nur Strom, sondern auch Daten übertragen werden können.",
-        mnemonic: "USB überträgt nicht nur Strom, sondern kann auch Daten übertragen.",
+        why: "Eine eigene Powerbank liefert Strom, ohne dass das Smartphone mit einem unbekannten USB-Host verbunden wird. Dadurch entsteht keine fremde USB-Datenverbindung.",
+        mnemonic: "Eine eigene Powerbank ist unterwegs eine sichere Stromquelle.",
       },
       incorrect: {
-        why: "Der rote Datenstrom ist eine Visualisierung für den möglichen Datendiebstahl. Er zeigt, dass über eine manipulierte USB-Verbindung nicht nur Strom, sondern auch Daten übertragen werden können.",
-        mnemonic: "USB überträgt nicht nur Strom, sondern kann auch Daten übertragen.",
+        why: "Eine Powerbank schützt nicht durch Verschlüsselung oder Virenerkennung. Der Vorteil besteht darin, dass keine Verbindung zu einem unbekannten USB-Anschluss notwendig ist.",
+        mnemonic: "Eine eigene Powerbank ist unterwegs eine sichere Stromquelle.",
       },
     },
   },
   {
     id: 8,
-    text: "Welche Handlung beendet im Video den möglichen Datenfluss?",
-options: [
-      { key: "A", label: "Emma aktiviert den Flugmodus." },
-      { key: "B", label: "Emma sperrt ihr Smartphone." },
-      { key: "C", label: "Emma trennt das Smartphone vom fremden USB-Kabel und verwendet stattdessen eine Powerbank." },
-      { key: "D", label: "Der Zug fährt in den Bahnhof ein." },
+    text: "Wie kannst du eine mögliche USB-Datenverbindung beenden?",
+    options: [
+      { key: "A", label: "Den Flugmodus aktivieren" },
+      { key: "B", label: "Das Smartphone sperren" },
+      { key: "C", label: "Die unbekannte USB-Verbindung trennen und eigenes Ladezubehör verwenden" },
+      { key: "D", label: "Nur WLAN ausschalten" },
     ],
     correct: "C",
     feedback: {
       correct: {
-        why: "Sobald Emma das fremde USB-Kabel entfernt und stattdessen die Powerbank nutzt, wird die mögliche Datenverbindung unterbrochen.",
-        mnemonic: "Trenne unbekannte USB-Verbindungen und verwende sichere Alternativen.",
+        why: "Durch das Trennen der USB-Verbindung werden sowohl die Strom- als auch die mögliche Datenverbindung beendet. Anschließend kann eine vertrauenswürdige Ladequelle verwendet werden.",
+        mnemonic: "Unbekannte USB-Verbindung trennen und sicher weiterladen.",
       },
       incorrect: {
-        why: "Sobald Emma das fremde USB-Kabel entfernt und stattdessen die Powerbank nutzt, wird die mögliche Datenverbindung unterbrochen.",
-        mnemonic: "Trenne unbekannte USB-Verbindungen und verwende sichere Alternativen.",
+        why: "Flugmodus, Displaysperre und ausgeschaltetes WLAN beenden keine bestehende USB-Datenverbindung. Dafür muss die unbekannte USB-Verbindung physisch getrennt werden.",
+        mnemonic: "Unbekannte USB-Verbindung trennen und sicher weiterladen.",
       },
     },
   },
   {
     id: 9,
-    text: "Was ist die wichtigste Botschaft des Videos?",
-options: [
-      { key: "A", label: "Fremden Menschen sollte man grundsätzlich nicht vertrauen." },
-      { key: "B", label: "Öffentliche Bahnhöfe sind unsicher." },
-      { key: "C", label: "Beim Laden sollte man unbekannte USB-Kabel vermeiden und stattdessen sichere Alternativen wie eine Powerbank oder das eigene Ladegerät nutzen." },
-      { key: "D", label: "Smartphones sollten nur ausgeschaltet geladen werden." },
+    text: "Welche Aussage beschreibt gutes Sicherheitsverhalten beim Laden am besten?",
+    options: [
+      { key: "A", label: "Öffentliche Orte grundsätzlich vermeiden" },
+      { key: "B", label: "Nur Kabel von freundlich wirkenden Personen verwenden" },
+      { key: "C", label: "Möglichst eigenes Ladezubehör oder eine eigene Powerbank verwenden" },
+      { key: "D", label: "Das Smartphone beim Laden immer ausschalten" },
     ],
     correct: "C",
     feedback: {
       correct: {
-        why: "Das Video richtet sich nicht gegen fremde Menschen oder öffentliche Orte. Die wichtigste Botschaft lautet: Verwende möglichst dein eigenes Ladezubehör oder eine Powerbank, um das Risiko von Juice Jacking zu reduzieren.",
-        mnemonic: "Vertraue deinem eigenen Ladezubehör.",
+        why: "Eigenes Ladezubehör reduziert die Abhängigkeit von unbekannten USB-Ports und fremden Kabeln. Entscheidend ist die vertrauenswürdige Ladequelle, nicht der Ort oder die Person.",
+        mnemonic: "Vertraue beim Laden deinem eigenen Zubehör.",
       },
       incorrect: {
-        why: "Das Video richtet sich nicht gegen fremde Menschen oder öffentliche Orte. Die wichtigste Botschaft lautet: Verwende möglichst dein eigenes Ladezubehör oder eine Powerbank, um das Risiko von Juice Jacking zu reduzieren.",
-        mnemonic: "Vertraue deinem eigenen Ladezubehör.",
+        why: "Das Risiko hängt nicht grundsätzlich vom öffentlichen Ort oder vom Auftreten einer Person ab. Entscheidend ist, ob die verwendete USB-Verbindung vertrauenswürdig ist.",
+        mnemonic: "Vertraue beim Laden deinem eigenen Zubehör.",
       },
     },
   },
   {
     id: 10,
-    text: "Welche der folgenden Situationen wäre nach dem Video die sicherste?",
-options: [
-      { key: "A", label: "Ein fremdes USB-C-Kabel an einer öffentlichen Ladestation benutzen." },
-      { key: "B", label: "Das Smartphone an einer öffentlichen USB-Buchse laden." },
-      { key: "C", label: "Die eigene Powerbank oder das eigene Netzteil verwenden." },
-      { key: "D", label: "Ein USB-Kabel benutzen, das freundlich angeboten wird." },
+    text: "Welche Aussage über sicheres Laden trifft zu?",
+    options: [
+      { key: "A", label: "Jeder öffentliche USB-Anschluss ist manipuliert" },
+      { key: "B", label: "Ein USB Data Blocker schützt vor dem Diebstahl des Smartphones" },
+      { key: "C", label: "Unbekannte USB-Verbindungen sollten möglichst vermieden und sichere Alternativen genutzt werden" },
+      { key: "D", label: "Der Flugmodus verhindert jede USB-Datenübertragung" },
     ],
     correct: "C",
     feedback: {
       correct: {
-        why: "Die sicherste Lösung ist die Nutzung der eigenen Powerbank oder eines eigenen Ladegeräts an einer normalen Steckdose. So besteht keine Verbindung zu einer unbekannten USB-Datenquelle.",
-        mnemonic: "Eigenes Ladezubehör ist immer die sicherste Wahl.",
+        why: "Nicht jeder öffentliche USB-Anschluss ist manipuliert. Unbekannte USB-Verbindungen können jedoch ein vermeidbares Risiko darstellen, weshalb vertrauenswürdige Alternativen sinnvoll sind.",
+        mnemonic: "Unbekannte USB-Verbindungen vermeiden, ohne unnötig Angst zu erzeugen.",
       },
       incorrect: {
-        why: "Die sicherste Lösung ist die Nutzung der eigenen Powerbank oder eines eigenen Ladegeräts an einer normalen Steckdose. So besteht keine Verbindung zu einer unbekannten USB-Datenquelle.",
-        mnemonic: "Eigenes Ladezubehör ist immer die sicherste Wahl.",
+        why: "Öffentliche USB-Anschlüsse sind nicht automatisch manipuliert. Ein Data Blocker blockiert Datenleitungen, und der Flugmodus beendet keine USB-Datenverbindung.",
+        mnemonic: "Unbekannte USB-Verbindungen vermeiden, ohne unnötig Angst zu erzeugen.",
       },
     },
   },
@@ -230,7 +230,15 @@ type Scenario = 1 | 2;
 
 type Screen = "attract" | "quiz" | "video" | "summary" | "transition" | "finalResult" | "protectionPoster";
 
+type AnswerState = Record<Scenario, Record<number, string>>;
+
 const IDLE_TIMEOUT_MS = 5 * 60 * 1000;
+
+const createEmptyAnswers = (): AnswerState => ({ 1: {}, 2: {} });
+
+function getScenarioScore(questions: Question[], answers: Record<number, string>) {
+  return questions.reduce((total, question) => total + (answers[question.id] === question.correct ? 1 : 0), 0);
+}
 
 function isStoryboardMode() {
   if (typeof window === "undefined") return false;
@@ -252,11 +260,14 @@ function InteractiveQuizApp() {
   const [scenario, setScenario] = useState<Scenario>(1);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [videoIndex, setVideoIndex] = useState(0);
-  const [selected, setSelected] = useState<string | null>(null);
-  const [score, setScore] = useState(0);
+  const [answers, setAnswers] = useState<AnswerState>(createEmptyAnswers);
   const [cancelDialogOpen, setCancelDialogOpen] = useState(false);
   const idleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const activeQuestions = scenario === 1 ? QUESTIONS : SCENARIO_2_QUESTIONS;
+  const activeQuestion = activeQuestions[questionIndex];
+  const selected = answers[scenario][activeQuestion.id] ?? null;
+  const partOneScore = getScenarioScore(QUESTIONS, answers[1]);
+  const totalScore = partOneScore + getScenarioScore(SCENARIO_2_QUESTIONS, answers[2]);
 
   const clearIdleTimer = useCallback(() => {
     if (idleTimer.current) {
@@ -271,8 +282,7 @@ function InteractiveQuizApp() {
     setScenario(1);
     setQuestionIndex(0);
     setVideoIndex(0);
-    setSelected(null);
-    setScore(0);
+    setAnswers(createEmptyAnswers());
     setCancelDialogOpen(false);
   }, [clearIdleTimer]);
 
@@ -301,24 +311,29 @@ function InteractiveQuizApp() {
     setScenario(1);
     setQuestionIndex(0);
     setVideoIndex(0);
-    setSelected(null);
-    setScore(0);
+    setAnswers(createEmptyAnswers());
     setCancelDialogOpen(false);
     setScreen("video");
   };
 
   const handleSelect = (key: string) => {
-    setSelected(key);
-    if (key === activeQuestions[questionIndex].correct) {
-      setScore((currentScore) => currentScore + 1);
-    }
+    setAnswers((currentAnswers) => {
+      if (currentAnswers[scenario][activeQuestion.id]) return currentAnswers;
+
+      return {
+        ...currentAnswers,
+        [scenario]: {
+          ...currentAnswers[scenario],
+          [activeQuestion.id]: key,
+        },
+      };
+    });
   };
 
   const handleStartPart2 = () => {
     setScenario(2);
     setQuestionIndex(0);
     setVideoIndex(5);
-    setSelected(null);
     setCancelDialogOpen(false);
     setScreen("transition");
   };
@@ -327,7 +342,6 @@ function InteractiveQuizApp() {
     setScenario(2);
     setQuestionIndex(0);
     setVideoIndex(5);
-    setSelected(null);
     setCancelDialogOpen(false);
     setScreen("video");
   };
@@ -340,7 +354,6 @@ function InteractiveQuizApp() {
     }
 
     setQuestionIndex(nextQuestionIndex);
-    setSelected(null);
     if (scenario === 2) {
       setScreen("quiz");
       return;
@@ -355,8 +368,14 @@ function InteractiveQuizApp() {
     setScreen("video");
   };
 
+  const handleBack = () => {
+    if (questionIndex === 0) return;
+
+    setQuestionIndex((currentIndex) => currentIndex - 1);
+    setScreen("quiz");
+  };
+
   const handleVideoComplete = () => {
-    setSelected(null);
     if (scenario === 2) {
       setQuestionIndex(0);
       setScreen("quiz");
@@ -404,14 +423,16 @@ function InteractiveQuizApp() {
               <span style={{ color: "var(--accent)" }}>⚡</span>
               JUICE JACKING
             </div>
-            <CancelRunButton onClick={() => setCancelDialogOpen(true)} />
             <QuizQuestion
-              question={activeQuestions[questionIndex]}
+              question={activeQuestion}
               questionIndex={questionIndex}
               total={activeQuestions.length}
               selected={selected}
               onSelect={handleSelect}
               onNext={handleNext}
+              onBack={handleBack}
+              canGoBack={questionIndex > 0}
+              cancelAction={<CancelRunButton onClick={() => setCancelDialogOpen(true)} />}
             />
           </motion.div>
         )}
@@ -429,7 +450,7 @@ function InteractiveQuizApp() {
               <span style={{ color: "var(--accent)" }}>⚡</span>
               JUICE JACKING
             </div>
-            <CancelRunButton onClick={() => setCancelDialogOpen(true)} />
+            <CancelRunButton onClick={() => setCancelDialogOpen(true)} floating />
             <VideoPlaceholder
               videoIndex={videoIndex}
               onComplete={handleVideoComplete}
@@ -450,7 +471,7 @@ function InteractiveQuizApp() {
             transition={{ duration: 0.4 }}
           >
             <SummaryScreen
-              score={score}
+              score={partOneScore}
               total={QUESTIONS.length}
               onContinueToPart2={handleStartPart2}
             />
@@ -484,7 +505,7 @@ function InteractiveQuizApp() {
             transition={{ duration: 0.4 }}
           >
             <SummaryScreen
-              score={score}
+              score={totalScore}
               total={QUESTIONS.length + SCENARIO_2_QUESTIONS.length}
               finalMode
               onContinueToProtectionTips={() => setScreen("protectionPoster")}
@@ -516,13 +537,14 @@ function InteractiveQuizApp() {
 
 interface CancelRunButtonProps {
   onClick: () => void;
+  floating?: boolean;
 }
 
-function CancelRunButton({ onClick }: CancelRunButtonProps) {
+function CancelRunButton({ onClick, floating = false }: CancelRunButtonProps) {
   return (
     <motion.button
       type="button"
-      className="kiosk-cancel-button"
+      className={floating ? "kiosk-cancel-button kiosk-cancel-button-floating" : "kiosk-cancel-button"}
       onClick={onClick}
       whileHover={{ scale: 1.03, borderColor: "var(--accent)" }}
       whileTap={{ scale: 0.97 }}
